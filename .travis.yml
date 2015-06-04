@@ -1,3 +1,19 @@
 language: csharp
 mono: latest
 solution: SQLiteWebService.sln
+
+env:
+  global:
+   # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
+   #   via the "travis encrypt" command using the project repo's public key
+   - secure: "jedKe+J59mi8qeaS96DBH5daq567wlq76M0g0FaBgpMyEIKGROX0ycZlNglXo5c0VQ+wqSds3wv8Wvt1KRIycKuPfo8QHDNzjMD0U3Mw1DebwABJclksRCqbLDdu5HgfTrXHq/guBY+wD0JfwIYTAgPH642ei+SGVm9HE2hmb+6uD0o2nj2D6M2aljD10neoRIHylMf+F2+j69gDwhrd84+SuAuu2XRV8YLxynXZisdmAZChnhbite5St5Le7J+6UOkuCQ1hUGLZ4CszDKOwuRdoX7mgHyTdbLbrIUgAdZzN7UIl1IJDUm803+3ZsRxOsrj/Y8RgccZiEBDKBjsir7nm684kwG7Vcr64Mtee1aFzdsRGHptg8s5/hXJChtO66wAnK9t2aC4fK/XgmgrodmyMFX2p9BKWw6ZS+qyguPoSet8dvKTYouz2h3Vl8udYcRimxx6SGkeWnp6eDJuaMjxLdId6PGygfx7HfKXfFuUc9K5pL3LLxICQU9nx3IQrohveKav8T7tLdodalAZLFKjtqcd3SZRihG3iYPVISK1Ja8YFf2gYoSa0EYNvbYqpBxYFO4fcmU1H50Q+H/mV8dGSeuvBpBbX1ofI+Y493W8UHxMb/CT8fvOM9WswKxG1xQ+bnxnnuSk/rWnls5dirOm6rJttw1NWxiUYfePxaew="
+
+addons:
+  coverity_scan:
+    project:
+      name: "jyksnw/SQLiteWebService"
+      description: "Build submitted via Travis CI"
+    notification_email: jsn.snw@gmail.com
+    build_command_prepend: "msbuild /t:Clean"
+    build_command:   "msbuild /t:Rebuild"
+    branch_pattern: coverity_scan
